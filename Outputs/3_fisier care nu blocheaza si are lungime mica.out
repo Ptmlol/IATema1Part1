@@ -46,7 +46,7 @@ Cost:  9
 Lungime:  7
 Numar total noduri calculate: 16318 noduri
 Maximul de noduri din memorie: 16318
-Timp Solutie: 6.074035882949829 secunde
+Timp Solutie: 6.283998727798462 secunde
 Matricea de restrictie:
 [[1838, 2209, 1838], [2464, 3974, 2464], [1844, 2232, 1844]]
 
@@ -144,7 +144,7 @@ Cost:  17
 Lungime:  14
 Numar total noduri calculate: 15295 noduri
 Maximul de noduri din memorie: 16318
-Timp Solutie: 1.9590003490447998 secunde
+Timp Solutie: 1.8870007991790771 secunde
 Matricea de restrictie:
 [[3337, 4217, 3305], [4866, 7567, 5222], [3528, 4686, 3496]]
 
@@ -242,7 +242,7 @@ Cost:  17
 Lungime:  14
 Numar total noduri calculate: 4661 noduri
 Maximul de noduri din memorie: 16318
-Timp Solutie: 0.8150172233581543 secunde
+Timp Solutie: 0.8110265731811523 secunde
 Matricea de restrictie:
 [[3784, 4921, 3785], [5567, 8738, 6028], [3970, 5449, 3971]]
 
@@ -340,7 +340,7 @@ Cost:  17
 Lungime:  14
 Numar total noduri calculate: 7 noduri
 Maximul de noduri din memorie: 16318
-Timp Solutie: 0.17798256874084473 secunde
+Timp Solutie: 0.1859736442565918 secunde
 Matricea de restrictie:
 [[4900, 6358, 4882], [7393, 11369, 8028], [5218, 7316, 5200]]
 Limita:  18
