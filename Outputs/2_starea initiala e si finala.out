@@ -1,0 +1,79 @@
+Solutie cu UCS
+Drum Solutie: 
+Nr. Ordine 0
+1 2 3
+4 5 6
+7 8 0
+
+
+Cost:  0
+Lungime:  1
+Numar total noduri calculate: 0 noduri
+Maximul de noduri din memorie: 0
+Timp Solutie: 0.0 secunde
+Matricea de restrictie:
+[[0, 0, 0], [0, 0, 0], [0, 0, 1]]
+
+----------------
+
+==============
+
+Solutie cu A*
+Drum Solutie: 
+Nr. Ordine 0
+1 2 3
+4 5 6
+7 8 0
+
+
+Cost:  0
+Lungime:  1
+Numar total noduri calculate: 0 noduri
+Maximul de noduri din memorie: 0
+Timp Solutie: 0.0 secunde
+Matricea de restrictie:
+[[0, 0, 0], [0, 0, 0], [0, 0, 1]]
+
+----------------
+
+==============
+
+Solutie cu A* optimizat
+Drum Solutie:
+Nr. Ordine 0
+1 2 3
+4 5 6
+7 8 0
+
+
+Cost:  0
+Lungime:  1
+Numar total noduri calculate: 0 noduri
+Maximul de noduri din memorie: 0
+Timp Solutie: 0.0 secunde
+Matricea de restrictie:
+[[0, 0, 0], [0, 0, 0], [0, 0, 1]]
+
+----------------
+
+==============
+
+Solutie cu IDA*
+Drum Solutie: 
+Nr. Ordine 0
+1 2 3
+4 5 6
+7 8 0
+
+
+Cost:  0
+Lungime:  1
+Numar total noduri calculate: 0 noduri
+Maximul de noduri din memorie: 0
+Timp Solutie: 0.0 secunde
+Matricea de restrictie:
+[[0, 0, 0], [0, 0, 0], [0, 0, 1]]
+Limita:  1
+
+----------------
+

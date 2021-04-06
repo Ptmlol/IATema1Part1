@@ -1,0 +1,349 @@
+Solutie cu UCS
+Drum Solutie: 
+Nr. Ordine 0
+1 4 6
+2 5 7
+9 0 3
+
+
+Nr. Ordine 3
+1 4 6
+2 5 7
+9 3 0
+
+
+Nr. Ordine 10
+1 4 6
+2 0 7
+9 3 5
+
+
+Nr. Ordine 56
+1 4 6
+2 3 7
+9 0 5
+
+
+Nr. Ordine 196
+1 4 6
+2 3 7
+0 9 5
+
+
+Nr. Ordine 617
+1 4 6
+2 0 7
+3 9 5
+
+
+Nr. Ordine 2737
+1 4 6
+2 5 7
+3 9 0
+
+
+Cost:  9
+Lungime:  7
+Numar total noduri calculate: 16318 noduri
+Maximul de noduri din memorie: 16318
+Timp Solutie: 6.074035882949829 secunde
+Matricea de restrictie:
+[[1838, 2209, 1838], [2464, 3974, 2464], [1844, 2232, 1844]]
+
+----------------
+
+==============
+
+Solutie cu A*
+Drum Solutie: 
+Nr. Ordine 0
+1 4 6
+2 5 7
+9 0 3
+
+
+Nr. Ordine 4
+1 4 6
+2 0 7
+9 5 3
+
+
+Nr. Ordine 110
+1 0 6
+2 4 7
+9 5 3
+
+
+Nr. Ordine 118
+1 2 6
+0 4 7
+9 5 3
+
+
+Nr. Ordine 119
+1 2 6
+4 0 7
+9 5 3
+
+
+Nr. Ordine 123
+1 2 6
+4 7 0
+9 5 3
+
+
+Nr. Ordine 145
+1 2 6
+4 7 3
+9 5 0
+
+
+Nr. Ordine 148
+1 2 6
+4 7 3
+9 0 5
+
+
+Nr. Ordine 1008
+1 2 6
+4 7 3
+0 9 5
+
+
+Nr. Ordine 1022
+1 2 6
+4 0 3
+7 9 5
+
+
+Nr. Ordine 1029
+1 2 0
+4 6 3
+7 9 5
+
+
+Nr. Ordine 15279
+1 2 3
+4 6 0
+7 9 5
+
+
+Nr. Ordine 15280
+1 2 3
+4 0 6
+7 9 5
+
+
+Nr. Ordine 15293
+1 2 3
+4 5 6
+7 9 0
+
+
+Cost:  17
+Lungime:  14
+Numar total noduri calculate: 15295 noduri
+Maximul de noduri din memorie: 16318
+Timp Solutie: 1.9590003490447998 secunde
+Matricea de restrictie:
+[[3337, 4217, 3305], [4866, 7567, 5222], [3528, 4686, 3496]]
+
+----------------
+
+==============
+
+Solutie cu A* optimizat
+Drum Solutie:
+Nr. Ordine 0
+1 4 6
+2 5 7
+9 0 3
+
+
+Nr. Ordine 4
+1 4 6
+2 0 7
+9 5 3
+
+
+Nr. Ordine 94
+1 4 6
+2 7 0
+9 5 3
+
+
+Nr. Ordine 130
+1 4 6
+2 7 3
+9 5 0
+
+
+Nr. Ordine 133
+1 4 6
+2 7 3
+9 0 5
+
+
+Nr. Ordine 303
+1 4 6
+2 7 3
+0 9 5
+
+
+Nr. Ordine 308
+1 4 6
+2 0 3
+7 9 5
+
+
+Nr. Ordine 309
+1 4 6
+0 2 3
+7 9 5
+
+
+Nr. Ordine 346
+1 0 6
+4 2 3
+7 9 5
+
+
+Nr. Ordine 350
+1 3 6
+4 2 0
+7 9 5
+
+
+Nr. Ordine 4641
+1 3 0
+4 2 6
+7 9 5
+
+
+Nr. Ordine 4650
+1 0 3
+4 2 6
+7 9 5
+
+
+Nr. Ordine 4653
+1 2 3
+4 0 6
+7 9 5
+
+
+Nr. Ordine 4659
+1 2 3
+4 5 6
+7 9 0
+
+
+Cost:  17
+Lungime:  14
+Numar total noduri calculate: 4661 noduri
+Maximul de noduri din memorie: 16318
+Timp Solutie: 0.8150172233581543 secunde
+Matricea de restrictie:
+[[3784, 4921, 3785], [5567, 8738, 6028], [3970, 5449, 3971]]
+
+----------------
+
+==============
+
+Solutie cu IDA*
+Drum Solutie: 
+Nr. Ordine 0
+1 4 6
+2 5 7
+9 0 3
+
+
+Nr. Ordine 4
+1 4 6
+2 0 7
+9 5 3
+
+
+Nr. Ordine 2
+1 4 6
+0 2 7
+9 5 3
+
+
+Nr. Ordine 5
+1 0 6
+4 2 7
+9 5 3
+
+
+Nr. Ordine 4
+1 2 6
+4 0 7
+9 5 3
+
+
+Nr. Ordine 3
+1 2 6
+4 7 0
+9 5 3
+
+
+Nr. Ordine 3
+1 2 6
+4 7 3
+9 5 0
+
+
+Nr. Ordine 2
+1 2 6
+4 7 3
+9 0 5
+
+
+Nr. Ordine 2
+1 2 6
+4 7 3
+0 9 5
+
+
+Nr. Ordine 3
+1 2 6
+4 0 3
+7 9 5
+
+
+Nr. Ordine 3
+1 2 6
+4 3 0
+7 9 5
+
+
+Nr. Ordine 2
+1 2 0
+4 3 6
+7 9 5
+
+
+Nr. Ordine 3
+1 2 3
+4 0 6
+7 9 5
+
+
+Nr. Ordine 6
+1 2 3
+4 5 6
+7 9 0
+
+
+Cost:  17
+Lungime:  14
+Numar total noduri calculate: 7 noduri
+Maximul de noduri din memorie: 16318
+Timp Solutie: 0.17798256874084473 secunde
+Matricea de restrictie:
+[[4900, 6358, 4882], [7393, 11369, 8028], [5218, 7316, 5200]]
+Limita:  18
+
+----------------
+
