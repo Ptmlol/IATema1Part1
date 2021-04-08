@@ -23,7 +23,7 @@ class NodParcurgere:
             nod = nod.parinte
         return l
 
-    def afisDrum(self, afisCost=False):  # returneaza si lungimea drumului
+    def afisDrum(self, afisCost=False):
         l = self.obtineDrum()
         for nod in l:
             print("Nr. Ordine", str(nod.nr_ordine))
@@ -48,8 +48,6 @@ class NodParcurgere:
         sir += str(self.info)
         return (sir)
 
-    # euristica banală: daca nu e stare scop, returnez 1, altfel 0
-
     def __str__(self):
         sir = ""
         for linie in self.info:
@@ -69,6 +67,7 @@ class Graph:  # graful problemei
     def __init__(self, nume_fisier):
         f = open(nume_fisier, "r")
         sirFisier = f.read()
+        self.verf_date_intrare(sirFisier)
         try:
             listaLinii = sirFisier.strip().split("\n")
             self.k = listaLinii.pop(0)
@@ -79,7 +78,7 @@ class Graph:  # graful problemei
             print("Eroare la parsare!")
             sys.exit(0)
         self.restrict_matrix = [[0 for x in range(len(self.start[0]))] for y in range(len(self.start[0]))]# declaram o matrice goala de dimensiunea matricei noastre din fisier
-        for i in range(len(self.start)): # cautam in matricea noastra dinfisier pozitia in care se afla placuta libera ( 0 )
+        for i in range(len(self.start)): # cautam in matricea noastra din fisier pozitia in care se afla placuta libera ( 0 )
             for j in range(len(self.start[i])):
                 if int(self.start[i][j]) == 0:
                     line_zero = i
@@ -96,22 +95,21 @@ class Graph:  # graful problemei
     def testeaza_scop(self, nodCurent):
         to_matrix = numpy.array(nodCurent.info)
         if int(to_matrix[-1][-1]) == 0:
-            #print("PRINTAM NODCURENT.INFO", nodCurent.info)
             for i in range(0, len(to_matrix)):
                 for j in range(0, len(to_matrix)):
                     if not i == j == len(to_matrix) - 1 and not i == j == 0:
                         if i == 0 and j >= 1:
-                            if int(to_matrix[i][j - 1]) <= int(to_matrix[i][j]):
+                            if int(to_matrix[i][j - 1]) < int(to_matrix[i][j]):
                                 pass
                             else:
                                 return False
                         if i >= 1 and j == 0:
-                            if int(to_matrix[i - 1][j]) <= int(to_matrix[i][j]):
+                            if int(to_matrix[i - 1][j]) < int(to_matrix[i][j]):
                                 pass
                             else:
                                 return False
                         if i >= 1 and j >= 1:
-                            if int(to_matrix[i - 1][j]) <= int(to_matrix[i][j]) and int(to_matrix[i][j - 1]) <= int(to_matrix[i][j]):
+                            if int(to_matrix[i - 1][j]) < int(to_matrix[i][j]) and int(to_matrix[i][j - 1]) < int(to_matrix[i][j]):
                                 pass
                             else:
                                 return False
@@ -119,18 +117,39 @@ class Graph:  # graful problemei
         else:
             return False
 
-    # va genera succesorii sub forma de noduri in arborele de parcurgere
+    @staticmethod
+    def extract_digits(lst):
+        res = []
+        for el in lst:
+            sub = el.split(', ')
+            for strng in sub:
+                sub_2 = strng.strip("'").split(" ")
+                res.append(sub_2)
+        return (res)
 
-    # def nuAreSolutii(self, infoNod):
-    #     listaMatrice = sum(infoNod, [])
-    #     nrInversiuni = 0
-    #     for i in range(len(listaMatrice)):
-    #         if listaMatrice[i] != 0:
-    #             for j in range(i + 1, len(listaMatrice)):
-    #                 if listaMatrice[j] != 0:
-    #                     if listaMatrice[i] > listaMatrice[j]:
-    #                         nrInversiuni += 1
-    #     return nrInversiuni % 2 == 1
+    def verf_date_intrare(self, sir_fisier):
+        transforming = self.extract_digits(sir_fisier.split("\n")) # ['5', '1 2 3', '4 5 6', '7 8 0']  -> [['5'], ['1 2 3'], ['4 5 6'], ['7 8 0']] -> [['5'], ['1', '2', '3'], ['4', '5', '6'], ['7', '8', '0']]
+        formated = [[int(x) for x in lst] for lst in transforming]
+        if len(formated[0]) != 1:
+            print("Datele de intrare nu au formatul corect!")
+            exit()
+        standard_len = len(formated[1])
+        for i in range(2, len(formated)):
+            if len(formated[i]) != standard_len:
+                print("Datele de intrare nu au formatul corect!")
+                exit()
+
+
+    def nuAreSolutii(self, infoNod):
+        listaMatrice = sum(infoNod, [])
+        nrInversiuni = 0
+        for i in range(len(listaMatrice)):
+            if listaMatrice[i] != 0:
+                for j in range(i + 1, len(listaMatrice)):
+                    if listaMatrice[j] != 0:
+                        if listaMatrice[i] > listaMatrice[j]:
+                            nrInversiuni += 1
+        return nrInversiuni % 2 == 1
 
     def genereazaSuccesori(self, nodCurent, tip_euristica="euristica banala"):
         global nr_noduri, max_control, add
@@ -141,7 +160,6 @@ class Graph:  # graful problemei
                 break
             except:
                 pass
-        # stanga, dreapta, sus, jos
         try:
             directii = [[lGol, cGol - 1], [lGol, cGol + 1], [lGol - 1, cGol], [lGol + 1, cGol], [lGol + 1, cGol + 1], [lGol + 1, cGol - 1], [lGol - 1, cGol - 1], [lGol - 1, cGol + 1]]
             for index, (lPlacuta, cPlacuta) in enumerate(directii):
@@ -179,7 +197,27 @@ class Graph:  # graful problemei
     def calculeaza_h(self, infoNod, tip_euristica="euristica banala"):
         if tip_euristica == "euristica banala":
             return 1
-        elif tip_euristica == "euristica nebanala":
+        elif tip_euristica == "euristica admisibila 1":
+            h = 0
+            for lPlacutaC in range(len(infoNod)):
+                for cPlacutaC in range(len(infoNod[0])):
+                    if infoNod[lPlacutaC][cPlacutaC] != 0:
+                        placuta = infoNod[lPlacutaC][cPlacutaC]
+                        lPlacutaF = (placuta - 1) // len(infoNod[0])
+                        cPlacutaF = (placuta - 1) % len(infoNod[0])
+                        h += abs(lPlacutaF - lPlacutaC) + abs(cPlacutaF - cPlacutaC)
+            return h
+        elif tip_euristica == "euristica admisibila 2":
+            h = 0
+            for lPlacutaC in range(len(infoNod)):
+                for cPlacutaC in range(len(infoNod[0])):
+                    if infoNod[lPlacutaC][cPlacutaC] != 0:
+                        placuta = infoNod[lPlacutaC][cPlacutaC]
+                        lPlacutaF = (placuta - 1) // len(infoNod[0])
+                        cPlacutaF = (placuta - 1) % len(infoNod[0])
+                        h += abs(lPlacutaF - lPlacutaC) + abs(cPlacutaF - cPlacutaC)
+            return h
+        elif tip_euristica == "euristica neadmisibila":
             h = 0
             for lPlacutaC in range(len(infoNod)):
                 for cPlacutaC in range(len(infoNod[0])):
@@ -208,7 +246,8 @@ def a_star_opt(gr, nrSolutiiCautate, tip_euristica, timeoutss):
     start_time = time.time()
     while len(c) > 0:
         exec_time = time.time()
-        if round(exec_time - start_time) > int(timeoutss):
+        if round(exec_time) - round(start_time) >= int(timeoutss):
+            print("Execution timed out")
             return
         nodCurent = c.pop(0)
         closed.append(nodCurent)
@@ -268,13 +307,14 @@ def a_star(gr, nrSolutiiCautate, tip_euristica, timeoutss):
     add = 1
     #c = [NodParcurgere(gr.indiceNod(), gr.start, None, 0, gr.calculeaza_h(gr.start))]
     c = [NodParcurgere(0, gr.start, None, 0, gr.calculeaza_h(gr.start))]
-    # if gr.nuAreSolutii(gr.start):
-    #     print("Nu are solutii")
-    #     return
+    if gr.nuAreSolutii(gr.start):
+        print("Nu are solutii")
+        return
     start_time = time.time()
     while len(c) > 0:
         exec_time = time.time()
-        if round(exec_time - start_time) > int(timeoutss):
+        if round(exec_time) - round(start_time) >= int(timeoutss):
+            print("Execution timed out")
             return
         nodCurent = c.pop(0)
         if gr.testeaza_scop(nodCurent):
@@ -315,7 +355,8 @@ def uniform_cost(gr, nrSolutiiCautate, tip_euristica, timeoutss):
     nr_noduri = 0
     while len(c) > 0:
         exec_time = time.time()
-        if round(exec_time - start_time) > int(timeoutss):
+        if round(exec_time) - round(start_time) >= int(timeoutss):
+            print("Execution timed out")
             return
         nodCurent = c.pop(0)
         if gr.testeaza_scop(nodCurent):
@@ -353,7 +394,13 @@ def ida_star(gr, nrSolutiiCautate, tip_euristica, timeoutss):
     limita = nodStart.f
     start_time = time.time()
     while (True):
+        exec_time = time.time()
+        if round(exec_time) - round(start_time) >= int(timeoutss):
+            print("Execution timed out")
+            return
         nrSolutiiCautate, rez = construieste_drum(gr, nodStart, limita, nrSolutiiCautate, tip_euristica, timeoutss=timeoutss, start_time=start_time)
+        if nrSolutiiCautate == -1 and rez == "timeout":
+            return
         if rez == "gata":
             break
         if rez == float('inf'):
@@ -366,10 +413,10 @@ def ida_star(gr, nrSolutiiCautate, tip_euristica, timeoutss):
 def construieste_drum(gr, nodCurent, limita, nrSolutiiCautate, tip_euristica, timeoutss, start_time):
     global nr_noduri, add
     add = 1
-    #print ('A ajuns la: ', nodCurent)
     exec_time = time.time()
-    if round(exec_time - start_time) > int(timeoutss):
-        return
+    if round(exec_time) - round(start_time) >= int(timeoutss):
+        print("Execution timed out")
+        return (-1, 'timeout')
     if nodCurent.f > limita:
         return (nrSolutiiCautate, nodCurent.f)
     if gr.testeaza_scop(nodCurent) and nodCurent.f == limita:
@@ -391,8 +438,9 @@ def construieste_drum(gr, nodCurent, limita, nrSolutiiCautate, tip_euristica, ti
     lSuccesori = gr.genereazaSuccesori(nodCurent, tip_euristica=tip_euristica)
     minim = float('inf')
     for s in lSuccesori:
-        (nrSolutiiCautate, rez) = construieste_drum(gr, s, limita,
-                nrSolutiiCautate, tip_euristica, timeoutss, start_time)
+        (nrSolutiiCautate, rez) = construieste_drum(gr, s, limita, nrSolutiiCautate, tip_euristica, timeoutss, start_time)
+        if nrSolutiiCautate == -1 and rez == "timeout":
+            return (-1, 'timeout')
         if rez == 'gata':
             return (nrSolutiiCautate, 'gata')
         #print ('Compara ', rez, ' cu ', minim)
@@ -434,15 +482,18 @@ if __name__ == "__main__":
         sys.stdout = file
         gr = Graph(path_to_inputs + "\\" + inputs)
         print("Solutie cu UCS")
-        uniform_cost(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica nebanala", timeoutss=timeout)
+        uniform_cost(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 1", timeoutss=timeout)
         print("==============\n")
         print("Solutie cu A*")
-        a_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica nebanala", timeoutss=timeout)
+        a_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 1", timeoutss=timeout)
+        #a_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 2", timeoutss=timeout)
         print("==============\n")
         print("Solutie cu A* optimizat")
-        a_star_opt(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica nebanala", timeoutss=timeout)
+        a_star_opt(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 1", timeoutss=timeout)
+        #a_star_opt(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 2", timeoutss=timeout)
         print("==============\n")
         print("Solutie cu IDA*")
-        ida_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica nebanala", timeoutss=timeout)
+        ida_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 1", timeoutss=timeout)
+        #ida_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 2", timeoutss=timeout)
     sys.stdout = original
     print("Done! Check '" + path_to_outputs + "' for solutions.")
