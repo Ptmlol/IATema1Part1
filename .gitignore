@@ -114,4 +114,5 @@ dmypy.json
 .pyre/
 
 # Misc
-Outputs
+Outputs/
+testeuristici.py
