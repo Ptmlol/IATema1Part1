@@ -1,5 +1,6 @@
 # documentatie functii noi adaugate - https://github.com/Ptmlol/IATema1Part1/blob/main/addedfunctions.rst
 # documentatie propriu zisa ( metoda de apelare ) https://github.com/Ptmlol/IATema1Part1/blob/main/documentatie.rst
+# tot proiectul https://github.com/Ptmlol/IATema1Part1
 import copy
 import optparse
 import sys

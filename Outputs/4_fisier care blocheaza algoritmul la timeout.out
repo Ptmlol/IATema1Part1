@@ -145,10 +145,10 @@ Nr. Ordine 1796
 Cost:  28
 Lungime:  23
 Numar total noduri calculate: 1798 noduri
-Maximul de noduri din memorie: 19058
-Timp Solutie: 0.05500388145446777 secunde
+Maximul de noduri din memorie: 19756
+Timp Solutie: 0.05385446548461914 secunde
 Matricea de restrictie:
-[[2153, 3288, 2130], [3315, 5149, 3262], [2118, 3273, 2096]]
+[[2242, 3376, 2219], [3402, 5324, 3349], [2204, 3361, 2182]]
 
 ----------------
 
@@ -297,10 +297,10 @@ Nr. Ordine 1179
 Cost:  28
 Lungime:  23
 Numar total noduri calculate: 1181 noduri
-Maximul de noduri din memorie: 19058
-Timp Solutie: 0.07499527931213379 secunde
+Maximul de noduri din memorie: 19756
+Timp Solutie: 0.06981301307678223 secunde
 Matricea de restrictie:
-[[2240, 3491, 2223], [3525, 5537, 3474], [2203, 3488, 2187]]
+[[2329, 3579, 2312], [3612, 5712, 3561], [2289, 3576, 2273]]
 
 ----------------
 
@@ -461,10 +461,10 @@ Nr. Ordine 3
 Cost:  28
 Lungime:  25
 Numar total noduri calculate: 4 noduri
-Maximul de noduri din memorie: 19058
-Timp Solutie: 0.07300090789794922 secunde
+Maximul de noduri din memorie: 19756
+Timp Solutie: 0.06781864166259766 secunde
 Matricea de restrictie:
-[[2620, 4276, 2520], [4294, 6919, 4243], [2600, 4257, 2501]]
+[[2709, 4364, 2609], [4381, 7094, 4330], [2686, 4345, 2587]]
 Limita:  28
 
 ----------------
