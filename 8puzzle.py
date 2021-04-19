@@ -196,10 +196,10 @@ class Graph:  # graful problemei
             pass
         return listaSuccesori
 
-
     def calculeaza_h(self, infoNod, tip_euristica="euristica banala"):
         if tip_euristica == "euristica banala":
             return 1
+
         elif tip_euristica == "euristica admisibila 1":
             h = 0
             for lPlacutaC in range(len(infoNod)):
@@ -210,25 +210,30 @@ class Graph:  # graful problemei
                         cPlacutaF = (placuta - 1) % len(infoNod[0])
                         h += abs(lPlacutaF - lPlacutaC) + abs(cPlacutaF - cPlacutaC)
             return h
+
         elif tip_euristica == "euristica admisibila 2":
             h = 0
-            for lPlacutaC in range(len(infoNod)):
-                for cPlacutaC in range(len(infoNod[0])):
-                    if infoNod[lPlacutaC][cPlacutaC] != 0:
-                        placuta = infoNod[lPlacutaC][cPlacutaC]
-                        lPlacutaF = (placuta - 1) // len(infoNod[0])
-                        cPlacutaF = (placuta - 1) % len(infoNod[0])
-                        h += abs(lPlacutaF - lPlacutaC) + abs(cPlacutaF - cPlacutaC)
-            return h
-        elif tip_euristica == "euristica neadmisibila":
-            h = 0
-            for lPlacutaC in range(len(infoNod)):
-                for cPlacutaC in range(len(infoNod[0])):
-                    if infoNod[lPlacutaC][cPlacutaC] != 0:
-                        placuta = infoNod[lPlacutaC][cPlacutaC]
-                        lPlacutaF = (placuta - 1) // len(infoNod[0])
-                        cPlacutaF = (placuta - 1) % len(infoNod[0])
-                        h += abs(lPlacutaF - lPlacutaC) + abs(cPlacutaF - cPlacutaC)
+            to_matrix = numpy.array(infoNod)
+            if int(to_matrix[-1][-1]) == 0:
+                for i in range(0, len(to_matrix)):
+                    for j in range(0, len(to_matrix)):
+                        if not i == j == len(to_matrix) - 1 and not i == j == 0:
+                            if i == 0 and j >= 1:
+                                if int(to_matrix[i][j - 1]) < int(to_matrix[i][j]):
+                                    pass
+                                else:
+                                    h += 1
+                            if i >= 1 and j == 0:
+                                if int(to_matrix[i - 1][j]) < int(to_matrix[i][j]):
+                                    pass
+                                else:
+                                    h += 1
+                            if i >= 1 and j >= 1:
+                                if int(to_matrix[i - 1][j]) < int(to_matrix[i][j]) or int(to_matrix[i][j - 1]) < int(
+                                        to_matrix[i][j]):
+                                    pass
+                                else:
+                                    h += 1
             return h
 
     def __repr__(self):
@@ -487,16 +492,19 @@ if __name__ == "__main__":
         print("Solutie cu UCS")
         uniform_cost(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 1", timeoutss=timeout)
         print("==============\n")
-        print("Solutie cu A*")
+        print("Solutie cu A* prima euristica")
         a_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 1", timeoutss=timeout)
-        #a_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 2", timeoutss=timeout)
+        print("Solutie cu A* a doua euristica")
+        a_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 2", timeoutss=timeout)
         print("==============\n")
-        print("Solutie cu A* optimizat")
+        print("Solutie cu A* optimizat prima euristica")
         a_star_opt(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 1", timeoutss=timeout)
-        #a_star_opt(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 2", timeoutss=timeout)
+        print("Solutie cu A* optimizat a doua euristica")
+        a_star_opt(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 2", timeoutss=timeout)
         print("==============\n")
-        print("Solutie cu IDA*")
+        print("Solutie cu IDA* prima euristica")
         ida_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 1", timeoutss=timeout)
-        #ida_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 2", timeoutss=timeout)
+        print("Solutie cu IDA* a doua euristica")
+        ida_star(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 2", timeoutss=timeout)
     sys.stdout = original
     print("Done! Check '" + path_to_outputs + "' for solutions.")

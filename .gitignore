@@ -115,4 +115,5 @@ dmypy.json
 
 # Misc
 Outputs/
+Inputs/
 testeuristici.py

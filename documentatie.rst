@@ -38,4 +38,35 @@ Aceasta modalitate de citire a argumentelor a fost realizata cu ajutorul modulul
                             h += abs(lPlacutaF - lPlacutaC) + abs(cPlacutaF - cPlacutaC)
                 return h
 
-Aceasta euristica incearca sa calculeze numarul minim de mutari pentru stiind ...
+Aceasta euristica incearca sa calculeze numarul minim de mutari in functie de numarul placutei. Stim ca cu cat un numar este
+mai mare, cu atat este mai probabil ca placuta sa trebuiasca sa fie mutata spre coltul din dreapta jos.
+
+.. code-block:: python
+
+    elif tip_euristica == "euristica admisibila 2":
+    h = 0
+    to_matrix = numpy.array(infoNod)
+    if int(to_matrix[-1][-1]) == 0:
+        for i in range(0, len(to_matrix)):
+            for j in range(0, len(to_matrix)):
+                if not i == j == len(to_matrix) - 1 and not i == j == 0:
+                    if i == 0 and j >= 1:
+                        if int(to_matrix[i][j - 1]) < int(to_matrix[i][j]):
+                            pass
+                        else:
+                            h += 1
+                    if i >= 1 and j == 0:
+                        if int(to_matrix[i - 1][j]) < int(to_matrix[i][j]):
+                            pass
+                        else:
+                            h += 1
+                    if i >= 1 and j >= 1:
+                        if int(to_matrix[i - 1][j]) < int(to_matrix[i][j]) or int(to_matrix[i][j - 1]) < int(
+                                to_matrix[i][j]):
+                            pass
+                        else:
+                            h += 1
+    return h
+
+Pentru a doua euristica admisibila doar am copiat algoritmul de la testare scop, si am adunat 1
+atunci cand am gasit o placuta care nu respecta starea finala.

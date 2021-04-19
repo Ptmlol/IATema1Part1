@@ -2,7 +2,7 @@ Solutie cu UCS
 Execution timed out
 ==============
 
-Solutie cu A*
+Solutie cu A* prima euristica
 Drum Solutie: 
 Nr. Ordine 0
 0 8 7
@@ -145,16 +145,18 @@ Nr. Ordine 1796
 Cost:  28
 Lungime:  23
 Numar total noduri calculate: 1798 noduri
-Maximul de noduri din memorie: 19756
-Timp Solutie: 0.05385446548461914 secunde
+Maximul de noduri din memorie: 26562
+Timp Solutie: 0.05385947227478027 secunde
 Matricea de restrictie:
-[[2242, 3376, 2219], [3402, 5324, 3349], [2204, 3361, 2182]]
+[[2341, 3476, 2318], [3502, 5524, 3449], [2305, 3461, 2283]]
 
 ----------------
 
+Solutie cu A* a doua euristica
+Execution timed out
 ==============
 
-Solutie cu A* optimizat
+Solutie cu A* optimizat prima euristica
 Drum Solutie:
 Nr. Ordine 0
 0 8 7
@@ -297,16 +299,18 @@ Nr. Ordine 1179
 Cost:  28
 Lungime:  23
 Numar total noduri calculate: 1181 noduri
-Maximul de noduri din memorie: 19756
-Timp Solutie: 0.06981301307678223 secunde
+Maximul de noduri din memorie: 29532
+Timp Solutie: 0.07180666923522949 secunde
 Matricea de restrictie:
-[[2329, 3579, 2312], [3612, 5712, 3561], [2289, 3576, 2273]]
+[[6021, 8257, 5779], [8258, 12660, 7598], [5775, 7659, 5534]]
 
 ----------------
 
+Solutie cu A* optimizat a doua euristica
+Execution timed out
 ==============
 
-Solutie cu IDA*
+Solutie cu IDA* prima euristica
 Drum Solutie: 
 Nr. Ordine 0
 0 8 7
@@ -461,11 +465,13 @@ Nr. Ordine 3
 Cost:  28
 Lungime:  25
 Numar total noduri calculate: 4 noduri
-Maximul de noduri din memorie: 19756
-Timp Solutie: 0.06781864166259766 secunde
+Maximul de noduri din memorie: 29532
+Timp Solutie: 0.07081103324890137 secunde
 Matricea de restrictie:
-[[2709, 4364, 2609], [4381, 7094, 4330], [2686, 4345, 2587]]
+[[8185, 12282, 7836], [12145, 18122, 10861], [7908, 10876, 7560]]
 Limita:  28
 
 ----------------
 
+Solutie cu IDA* a doua euristica
+Execution timed out
