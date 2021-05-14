@@ -472,6 +472,7 @@ def get_arguments():
 global original
 global nr_noduri
 global max_control
+
 if __name__ == "__main__":
     original = sys.stdout
     path_to_inputs = get_arguments().inputs_path
