@@ -66,7 +66,7 @@ def cautaElemMatr(matr, elem): # returneaza pozitia  unui element din matrice
                 return i, j
 
 
-class Graph:  # graful problemei
+class Graph:  # graful problemei # B2
     def __init__(self, nume_fisier):
         f = open(nume_fisier, "r")
         sirFisier = f.read()
@@ -95,7 +95,7 @@ class Graph:  # graful problemei
         except Exception:
             pass
 
-    def testeaza_scop(self, nodCurent):
+    def testeaza_scop(self, nodCurent): #B5
         to_matrix = numpy.array(nodCurent.info)
         if int(to_matrix[-1][-1]) == 0:
             for i in range(0, len(to_matrix)):
@@ -130,7 +130,7 @@ class Graph:  # graful problemei
                 res.append(sub_2)
         return (res)
 
-    def verf_date_intrare(self, sir_fisier):
+    def verf_date_intrare(self, sir_fisier): #B10
         transforming = self.extract_digits(sir_fisier.split("\n")) # ['5', '1 2 3', '4 5 6', '7 8 0']  -> [['5'], ['1 2 3'], ['4 5 6'], ['7 8 0']] -> [['5'], ['1', '2', '3'], ['4', '5', '6'], ['7', '8', '0']]
         formated = [[int(x) for x in lst] for lst in transforming]
         if len(formated[0]) != 1:
@@ -143,7 +143,7 @@ class Graph:  # graful problemei
                 exit()
 
 
-    def nuAreSolutii(self, infoNod):
+    def nuAreSolutii(self, infoNod): # B10
         listaMatrice = sum(infoNod, [])
         nrInversiuni = 0
         for i in range(len(listaMatrice)):
@@ -154,7 +154,7 @@ class Graph:  # graful problemei
                             nrInversiuni += 1
         return nrInversiuni % 2 == 1
 
-    def genereazaSuccesori(self, nodCurent, tip_euristica="euristica banala"):
+    def genereazaSuccesori(self, nodCurent, tip_euristica="euristica banala"): # B3
         global nr_noduri, max_control, add
         listaSuccesori = []
         for lGol in range(len(nodCurent.info)):
@@ -173,7 +173,7 @@ class Graph:  # graful problemei
                         copieMatrice[lPlacuta][cPlacuta] = 0
                         if not nodCurent.contineInDrum(copieMatrice):  # and not self.nuAreSolutii(copieMatrice):
                             if index < 4:
-                                costArc = 1
+                                costArc = 1 # B4
                                 nr_noduri += 1
                                 add += 1
                                 if nr_noduri > max_control:
@@ -196,7 +196,7 @@ class Graph:  # graful problemei
             pass
         return listaSuccesori
 
-    def calculeaza_h(self, infoNod, tip_euristica="euristica banala"):
+    def calculeaza_h(self, infoNod, tip_euristica="euristica banala"): #B6
         if tip_euristica == "euristica banala":
             return 1
 
@@ -458,7 +458,7 @@ def construieste_drum(gr, nodCurent, limita, nrSolutiiCautate, tip_euristica, ti
     return (nrSolutiiCautate, minim)
 
 #########
-
+# 1
 def get_arguments():
     parser = optparse.OptionParser()
     parser.add_option("-i", "--input_path", dest="inputs_path", help="Path to the folder where inputs are located")
@@ -488,7 +488,7 @@ if __name__ == "__main__":
         file = open(path_to_outputs + "\\" + inputs.replace(inputs[len(inputs) - 3:], "out"), "a+")
         file.seek(0)
         file.truncate()
-        sys.stdout = file
+        sys.stdout = file # 7
         gr = Graph(path_to_inputs + "\\" + inputs)
         print("Solutie cu UCS")
         uniform_cost(gr, nrSolutiiCautate=int(nsol), tip_euristica="euristica admisibila 1", timeoutss=timeout)

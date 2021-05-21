@@ -46,7 +46,7 @@ Cost:  9
 Lungime:  7
 Numar total noduri calculate: 16318 noduri
 Maximul de noduri din memorie: 16318
-Timp Solutie: 5.847424745559692 secunde
+Timp Solutie: 6.110363483428955 secunde
 Matricea de restrictie:
 [[1838, 2209, 1838], [2464, 3974, 2464], [1844, 2232, 1844]]
 
@@ -144,7 +144,7 @@ Cost:  17
 Lungime:  14
 Numar total noduri calculate: 15295 noduri
 Maximul de noduri din memorie: 16318
-Timp Solutie: 1.678511381149292 secunde
+Timp Solutie: 1.8088288307189941 secunde
 Matricea de restrictie:
 [[3337, 4217, 3305], [4866, 7567, 5222], [3528, 4686, 3496]]
 
@@ -243,10 +243,10 @@ Nr. Ordine 4659
 Cost:  17
 Lungime:  14
 Numar total noduri calculate: 4661 noduri
-Maximul de noduri din memorie: 26562
-Timp Solutie: 0.7759301662445068 secunde
+Maximul de noduri din memorie: 23361
+Timp Solutie: 0.8044826984405518 secunde
 Matricea de restrictie:
-[[6658, 9404, 6608], [10228, 14366, 9987], [6765, 9166, 6715]]
+[[6408, 8647, 6358], [9503, 13636, 9482], [6515, 8693, 6465]]
 
 ----------------
 
@@ -297,10 +297,10 @@ Nr. Ordine 2942
 Cost:  9
 Lungime:  7
 Numar total noduri calculate: 11393 noduri
-Maximul de noduri din memorie: 26562
-Timp Solutie: 4.292500019073486 secunde
+Maximul de noduri din memorie: 23361
+Timp Solutie: 4.617204904556274 secunde
 Matricea de restrictie:
-[[7784, 11479, 7735], [12237, 17075, 11665], [7890, 10790, 7841]]
+[[7534, 10722, 7485], [11512, 16345, 11160], [7640, 10317, 7591]]
 
 ----------------
 
@@ -395,10 +395,10 @@ Nr. Ordine 6
 Cost:  17
 Lungime:  14
 Numar total noduri calculate: 7 noduri
-Maximul de noduri din memorie: 26562
-Timp Solutie: 0.1655583381652832 secunde
+Maximul de noduri din memorie: 23361
+Timp Solutie: 0.17979645729064941 secunde
 Matricea de restrictie:
-[[8900, 12916, 8832], [14063, 19706, 13665], [9138, 12657, 9070]]
+[[8650, 12159, 8582], [13338, 18976, 13160], [8888, 12184, 8820]]
 Limita:  18
 
 ----------------
@@ -462,10 +462,10 @@ Nr. Ordine 3
 Cost:  9
 Lungime:  9
 Numar total noduri calculate: 2 noduri
-Maximul de noduri din memorie: 26562
-Timp Solutie: 0.457775354385376 secunde
+Maximul de noduri din memorie: 23361
+Timp Solutie: 0.5021405220031738 secunde
 Matricea de restrictie:
-[[12463, 18046, 12338], [19355, 26959, 18332], [12612, 17186, 12487]]
+[[12213, 17289, 12088], [18630, 26229, 17827], [12362, 16713, 12237]]
 Limita:  9
 
 ----------------
